@@ -3,11 +3,12 @@
 {% block title %}Edit Ecole1{% endblock %}
 
 {% block body %}
-    <h1>Edit Ecole1</h1>
+    <div style="float: right;margin-right:20px">
+        <a href="{{ path('app_ecole1_index') }}"><i class="fa fa-fw fa-rotate-left" style="font-size: 40px;color: #0f0f0f" aria-hidden="true"></i></a>
+    </div>
+    <h1>Modification du cours : {{ ecole1.cours.nom }} de {{ ecole1.eleve.nom }} {{ ecole1.eleve.prenom }}</h1>
 
-    {{ include('ecole1/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_ecole1_index') }}">back to list</a>
+    {{ include('ecole1/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 
     {{ include('ecole1/_delete_form.html.twig') }}
 {% endblock %}

@@ -3,9 +3,11 @@
 {% block title %}New Ecole1{% endblock %}
 
 {% block body %}
-    <h1>Create new Ecole1</h1>
+    <div style="float: right;margin-right:20px">
+        <a href="{{ path('app_ecole1_index') }}"><i class="fa fa-fw fa-rotate-left" style="font-size: 40px;color: #0f0f0f" aria-hidden="true"></i></a>
+    </div>
+    <h1>Créer une nouvelle présence en cours</h1>
 
     {{ include('ecole1/_form.html.twig') }}
 
-    <a href="{{ path('app_ecole1_index') }}">back to list</a>
 {% endblock %}

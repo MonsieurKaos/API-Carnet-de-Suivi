@@ -3,14 +3,14 @@
 {% block title %}Eleve{% endblock %}
 
 {% block body %}
-    <h1>Eleve</h1>
+    <div style="float: right;margin-right:20px">
+        <a href="{{ path('app_eleve_index') }}"><i class="fa fa-fw fa-rotate-left" style="font-size: 40px;color: #0f0f0f" aria-hidden="true"></i></a>
+        <a href="{{ path('app_eleve_edit', {'id': eleve.id}) }}" style="margin-right:20px"><i class="fa fa-fw fa-edit" style="font-size: 40px;color: #0f0f0f" aria-hidden="true"></i></a>
+    </div>
+    <h1>Détail de l'élève : {{ eleve.nom }} {{ eleve.prenom }}</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ eleve.id }}</td>
-            </tr>
             <tr>
                 <th>Nom</th>
                 <td>{{ eleve.nom }}</td>
@@ -21,10 +21,6 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_eleve_index') }}">back to list</a>
-
-    <a href="{{ path('app_eleve_edit', {'id': eleve.id}) }}">edit</a>
 
     {{ include('eleve/_delete_form.html.twig') }}
 {% endblock %}

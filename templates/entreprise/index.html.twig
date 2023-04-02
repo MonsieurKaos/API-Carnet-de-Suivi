@@ -3,13 +3,14 @@
 {% block title %}Entreprise index{% endblock %}
 
 {% block body %}
-    <h1>Entreprise index</h1>
+    <a href="{{ path('app_entreprise_new') }}" style="float: right;margin-right:20px"><i class="fa fa-fw fa-user-plus" style="font-size: 40px;color: #0f0f0f" aria-hidden="true"></i></a>
+    <h1>Liste des présences en entreprise</h1>
+    <br>
 
-    <table class="table">
+    <table id="entreprise" class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>EleveId</th>
+                <th>Elève</th>
                 <th>Semaine</th>
                 <th>ActiPrev</th>
                 <th>ActiRea</th>
@@ -21,25 +22,65 @@
         <tbody>
         {% for entreprise in entreprises %}
             <tr>
-                <td>{{ entreprise.id }}</td>
-                <td>{{ entreprise.eleveId }}</td>
-                <td>{{ entreprise.semaine }}</td>
+                <td>{{ entreprise.eleve.nom }} {{ entreprise.eleve.prenom }}</td>
+                <td>S {{ entreprise.semaine }}</td>
                 <td>{{ entreprise.actiPrev }}</td>
                 <td>{{ entreprise.actiRea }}</td>
                 <td>{{ entreprise.commentaire }}</td>
                 <td>{{ entreprise.compeMiseEnEouvre }}</td>
                 <td>
-                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
-                    <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">edit</a>
+                    <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fa fa-fw fa-edit" style="font-size: 20px;color: #0f0f0f" aria-hidden="true"></i></a>
+                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"><i class="fa fa-fw fa-eye" style="font-size: 20px;color: #0f0f0f" aria-hidden="true"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_entreprise_new') }}">Create new</a>
+    <script>
+        $(document).ready(function() {
+            $('#entreprise').DataTable({
+                "paging":   true,
+                "ordering": true,
+                language: {
+                    "sEmptyTable":     "Aucune donnée disponible dans le tableau",
+                    "sInfo":           "Affichage de _TOTAL_ élément(s)",
+                    "sInfoEmpty":      "Affichage de 0 élément",
+                    "sInfoFiltered":   "(filtré à partir de _MAX_ élément(s) au total)",
+                    "sInfoThousands":  ",",
+                    "sLengthMenu":     "Afficher _MENU_ éléments",
+                    "sLoadingRecords": "Chargement...",
+                    "sProcessing":     "Traitement...",
+                    "sSearch":         "Rechercher :",
+                    "sZeroRecords":    "Aucun élément correspondant trouvé",
+                    "oPaginate": {
+                        "sFirst":    "Premier",
+                        "sLast":     "Dernier",
+                        "sNext":     "Suivant",
+                        "sPrevious": "Précédent"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                        "sSortDescending": ": activer pour trier la colonne par ordre décroissant"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "%d lignes sélectionnées",
+                            "0": "Aucune ligne sélectionnée",
+                            "1": "1 ligne sélectionnée"
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}

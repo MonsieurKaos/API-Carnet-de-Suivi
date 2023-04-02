@@ -3,25 +3,25 @@
 {% block title %}Ecole1{% endblock %}
 
 {% block body %}
-    <h1>Ecole1</h1>
+    <div style="float: right;margin-right:20px">
+        <a href="{{ path('app_ecole1_index') }}"><i class="fa fa-fw fa-rotate-left" style="font-size: 40px;color: #0f0f0f" aria-hidden="true"></i></a>
+        <a href="{{ path('app_ecole1_edit', {'id': ecole1.id}) }}" style="margin-right:20px"><i class="fa fa-fw fa-edit" style="font-size: 40px;color: #0f0f0f" aria-hidden="true"></i></a>
+    </div>
+    <h1>Détail du cours : {{ ecole1.cours.nom }} de {{ ecole1.eleve.nom }} {{ ecole1.eleve.prenom }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ ecole1.id }}</td>
+                <th>Nom de l'élève</th>
+                <td>{{ ecole1.eleve.nom }} {{ ecole1.eleve.prenom }}</td>
             </tr>
             <tr>
-                <th>EleveId</th>
-                <td>{{ ecole1.eleveId }}</td>
-            </tr>
-            <tr>
-                <th>CoursId</th>
-                <td>{{ ecole1.coursId }}</td>
+                <th>Nom du cours</th>
+                <td>{{ ecole1.cours.nom }}</td>
             </tr>
             <tr>
                 <th>Semaine</th>
-                <td>{{ ecole1.semaine }}</td>
+                <td>S {{ ecole1.semaine }}</td>
             </tr>
             <tr>
                 <th>Notion</th>
@@ -37,10 +37,6 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_ecole1_index') }}">back to list</a>
-
-    <a href="{{ path('app_ecole1_edit', {'id': ecole1.id}) }}">edit</a>
 
     {{ include('ecole1/_delete_form.html.twig') }}
 {% endblock %}

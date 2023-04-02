@@ -63,6 +63,8 @@ class Entreprise
      */
     private $compeMiseEnEouvre;
 
+    private Eleve $eleve;
+
     /**
      * @return int
      */
@@ -80,17 +82,17 @@ class Entreprise
     }
 
     /**
-     * @return int|null
+     * @return mixed
      */
-    public function getEleveId(): ?int
+    public function getEleveId()
     {
         return $this->eleveId;
     }
 
     /**
-     * @param int|null $eleveId
+     * @param mixed $eleveId
      */
-    public function setEleveId(?int $eleveId): void
+    public function setEleveId($eleveId): void
     {
         $this->eleveId = $eleveId;
     }
@@ -173,6 +175,22 @@ class Entreprise
     public function setCompeMiseEnEouvre(?string $compeMiseEnEouvre): void
     {
         $this->compeMiseEnEouvre = $compeMiseEnEouvre;
+    }
+
+    /**
+     * @return Eleve
+     */
+    public function getEleve(): Eleve
+    {
+        return $this->eleve;
+    }
+
+    /**
+     * @param Eleve $eleve
+     */
+    public function setEleve(Eleve $eleve): void
+    {
+        $this->eleve = $eleve;
     }
 
 

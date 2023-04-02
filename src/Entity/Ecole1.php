@@ -61,6 +61,8 @@ class Ecole1
      */
     private $commentaire;
 
+    private Eleve $eleve;
+    private Cours $cours;
     /**
      * @return int
      */
@@ -94,17 +96,17 @@ class Ecole1
     }
 
     /**
-     * @return int|null
+     * @return mixed
      */
-    public function getCoursId(): ?int
+    public function getCoursId()
     {
         return $this->coursId;
     }
 
     /**
-     * @param int|null $coursId
+     * @param mixed $coursId
      */
-    public function setCoursId(?int $coursId): void
+    public function setCoursId($coursId): void
     {
         $this->coursId = $coursId;
     }
@@ -171,6 +173,38 @@ class Ecole1
     public function setCommentaire(?string $commentaire): void
     {
         $this->commentaire = $commentaire;
+    }
+
+    /**
+     * @return Eleve
+     */
+    public function getEleve(): Eleve
+    {
+        return $this->eleve;
+    }
+
+    /**
+     * @param Eleve $eleve
+     */
+    public function setEleve(Eleve $eleve): void
+    {
+        $this->eleve = $eleve;
+    }
+
+    /**
+     * @return Cours
+     */
+    public function getCours(): Cours
+    {
+        return $this->cours;
+    }
+
+    /**
+     * @param Cours $cours
+     */
+    public function setCours(Cours $cours): void
+    {
+        $this->cours = $cours;
     }
 
 
