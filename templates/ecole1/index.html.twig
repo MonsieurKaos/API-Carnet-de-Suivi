@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ecole1 index{% endblock %}
+
+{% block body %}
+    <h1>Ecole1 index</h1>
+
+    <table id="ecole" class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>EleveId</th>
+                <th>CoursId</th>
+                <th>Semaine</th>
+                <th>Notion</th>
+                <th>Eval</th>
+                <th>Commentaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ecole1 in ecole1s %}
+            <tr>
+                <td>{{ ecole1.id }}</td>
+                <td>{{ ecole1.eleveId }}</td>
+                <td>{{ ecole1.coursId }}</td>
+                <td>{{ ecole1.semaine }}</td>
+                <td>{{ ecole1.notion }}</td>
+                <td>{{ ecole1.eval }}</td>
+                <td>{{ ecole1.commentaire }}</td>
+                <td>
+                    <a href="{{ path('app_ecole1_show', {'id': ecole1.id}) }}">show</a>
+                    <a href="{{ path('app_ecole1_edit', {'id': ecole1.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function() {
+            $('#ecole').DataTable();
+        });
+    </script>
+    <a href="{{ path('app_ecole1_new') }}">Create new</a>
+{% endblock %}
